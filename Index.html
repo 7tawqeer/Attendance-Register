@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Attendance Register For Students">
+  <link rel="icon" href="favicon.png">
+  <title>Class Attendance — BCA</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="app">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div>
+        <div class="brand-name">📋 Class Registry</div>
+        <div class="brand-sub">Roll 250801 – 250842 &nbsp;·&nbsp; 42 Students</div>
+      </div>
+      <div>
+        <div class="clock-date" id="clockDate">—</div>
+        <div class="clock-day" id="clockDay">—</div>
+      </div>
+    </div>
+
+    <!-- NAV TABS -->
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-view="mark" onclick="switchView('mark')">✏️ Mark Attendance</button>
+      <button class="nav-tab" data-view="monthly" onclick="switchView('monthly')">📅 Monthly Registry</button>
+      <button class="nav-tab" data-view="history" onclick="switchView('history')">📊 Student Report</button>
+    </div>
+
+    <!-- ═══════════════ VIEW: MARK ═══════════════ -->
+    <div id="view-mark" class="fade-up">
+      <div class="date-row">
+        <span class="date-label">Date →</span>
+        <input type="date" id="markDatePicker" onchange="onDateChange()" />
+        <button class="today-btn" onclick="goToday()">⬤ Today</button>
+        <div class="save-ind">
+          <div class="dot green" id="saveDot"></div><span id="saveLabel">Saved ✓</span>
+        </div>
+      </div>
+
+      <div class="stats-strip">
+        <div class="stat-box">
+          <div class="sb-label">Present</div>
+          <div class="sb-val c-present" id="mPres">0</div>
+        </div>
+        <div class="stat-box">
+          <div class="sb-label">Absent</div>
+          <div class="sb-val c-absent" id="mAbs">42</div>
+        </div>
+        <div class="stat-box">
+          <div class="sb-label">Total</div>
+          <div class="sb-val c-total">42</div>
+        </div>
+        <div class="stat-box">
+          <div class="sb-label">Attendance %</div>
+          <div class="sb-val c-pct" id="mPct">0%</div>
+        </div>
+      </div>
+
+      <div class="controls-row">
+        <button class="btn btn-green" onclick="markAll(true)">✓ All Present</button>
+        <button class="btn btn-red" onclick="markAll(false)">✗ Clear All</button>
+        <input class="srch" id="markSrch" placeholder="Search roll…" oninput="filterGrid()" />
+        <button class="btn btn-ghost ml-auto" id="absBtnLbl" onclick="toggleAbsent()">Absent Only</button>
+        <button class="btn btn-blue" onclick="copyList()">📋 Copy List</button>
+      </div>
+
+      <div class="section-head">Tap a card → toggle Present / Absent</div>
+      <div class="roll-grid" id="rollGrid"></div>
+
+      <div class="out-panel">
+        <div class="out-head">
+          <span class="out-title">📤 Present List — copy ready</span>
+          <button class="copy-btn" id="cpBtn" onclick="copyList()">Copy</button>
+        </div>
+        <div class="out-body" id="outBody">No students marked present yet.</div>
+      </div>
+    </div>
+
+    <!-- ═══════════════ VIEW: MONTHLY ═══════════════ -->
+    <div id="view-monthly" style="display:none" class="fade-up">
+      <div class="month-header">
+        <div class="month-nav">
+          <button class="mnav-btn" onclick="changeMonth(-1)">‹</button>
+          <div style="text-align:center">
+            <div class="month-label" id="monthLabel">—</div>
+            <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--txt3);margin-top:2px"
+              id="monthSub">—</div>
+          </div>
+          <button class="mnav-btn" onclick="changeMonth(1)">›</button>
+        </div>
+        <button class="btn btn-ghost" onclick="exportCSV()">⬇ Export CSV</button>
+      </div>
+      <div class="month-stats" id="monthStats"></div>
+      <div class="reg-wrap" id="regWrap">
+        <table class="reg-table" id="regTable">
+          <thead id="regHead"></thead>
+          <tbody id="regBody"></tbody>
+        </table>
+      </div>
+      <div class="empty" id="monthEmpty" style="display:none">No attendance data for this month yet.<br>Mark attendance
+        first in the ✏️ tab.</div>
+    </div>
+
+    <!-- ═══════════════ VIEW: STUDENT REPORT ═══════════════ -->
+    <div id="view-history" style="display:none" class="fade-up">
+      <div class="hist-search">
+        <input class="srch" id="histSrch" placeholder="Search roll no…" oninput="renderHistory()" style="width:200px" />
+        <button class="btn btn-ghost" onclick="renderHistory()">Refresh</button>
+      </div>
+      <div id="histList"></div>
+    </div>
+
+  </div><!-- /app -->
+
+  <!-- STUDENT DETAIL PANEL -->
+  <div class="sp-overlay" id="spOverlay" onclick="if(event.target===this)closePanel()">
+    <div class="sp-card" id="spCard"></div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="toast" id="toast"></div>
+
+  <!-- SIGNATURE -->
+  <div class="signature">
+    <div class="sig-line"></div>
+    <div class="sig-text">Designed with ♥ by</div>
+    <div class="sig-name">✦ Tawqeer ✦</div>
+    <div class="sig-text">Your Class, Your Registry</div>
+    <div class="sig-line"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
