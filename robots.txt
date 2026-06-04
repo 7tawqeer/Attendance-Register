@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://attendanceregistry.netlify.app/sitemap.xml
