@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="170 30 260 380" width="100%" height="100%">
+  <defs>
+    <linearGradient id="orange-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff9f1c" />
+      <stop offset="50%" stop-color="#ff6b6b" />
+      <stop offset="100%" stop-color="#e71d36" />
+    </linearGradient>
+  </defs>
+
+  <g transform="translate(0, -20)">
+    <rect x="225" y="100" width="150" height="150" rx="28" transform="rotate(45 300 175)" fill="none" stroke="url(#orange-gradient)" stroke-width="6"/>
+    
+    <path d="M 240,190 C 240,140 280,115 320,115 C 295,135 285,160 290,195 C 295,220 315,230 310,250 C 280,240 250,220 240,190 Z" fill="url(#orange-gradient)"/>
+    <path d="M 275,225 C 275,185 310,155 345,160 C 325,175 315,195 320,225 C 305,220 290,230 275,225 Z" fill="url(#orange-gradient)" opacity="0.85"/>
+    <path d="M 310,245 C 320,215 340,195 360,200 C 345,210 340,225 342,242 C 330,245 320,248 310,245 Z" fill="url(#orange-gradient)" opacity="0.7"/>
+  </g>
+
+  <text x="300" y="380" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="url(#orange-gradient)" text-anchor="middle" letter-spacing="4">Tawqeer</text>
+</svg>
