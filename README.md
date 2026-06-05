@@ -1,6 +1,7 @@
 # 📋 Attendance Registry
 
-A streamlined web application designed to simplify the daily tracking of student attendance. This project was developed as a practical application of core web technologies for the Bachelor of Computer Applications (BCA) program at Government Degree College, Pulwama.
+This project was created to help my class representative (CR) to manage attendance more efficiently. In our class of 42 students, attendance was being tracked manually every day, which was repetitive, time-consuming, and prone to errors. To simplify the process, I built this web application that allows attendance to be recorded digitally, automatically calculates attendance percentages, stores records locally in the browser, and enables quick report sharing with a single click. The project demonstrates how simple web technologies can be used to solve a real-world problem faced by students on a daily basis.
+
 
 ## ✨ Project Overview
 
