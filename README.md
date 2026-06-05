@@ -16,8 +16,8 @@ Managing attendance records manually can be tedious and prone to errors. This re
 
 This project is already deployed and live! 
 
-**To test the application:**
-👉 Look at the **"About"** section on the right-hand side of this GitHub page. Click the website link provided there to open the live application.
+**To test the this:**
+👉 Look at the **"About"** section on the right-hand side of this GitHub page. Click the website link provided there to open the live preview.
 
 ## 🛠️ Built With
 
